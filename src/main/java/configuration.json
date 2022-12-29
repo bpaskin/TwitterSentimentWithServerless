@@ -1,0 +1,20 @@
+{
+"TWITTER": {
+	"CONSUMER_KEY_STR":"<from twitter>",
+	"CONSUMER_SECRET_STR":"<from twitter>",
+	"ACCESS_TOKEN_STR":"<from twitter>",
+	"ACCESS_TOKEN_SECRET_STR":"<from twitter>",
+	"PHRASE": "cacio e pepe",
+	"LANGUAGE": "it"
+	},
+"CLOUDANT": {
+	"DBNAME": "twitter",
+	"IAMAPIKEY": "<from cloudant>",
+	"URL":"<from cloudant>",
+	"SERVICENAME":"cloudant-serverless"
+	},
+"NLU": {
+	"IAMAPIKEY": "<from NLU>",
+	"URL": "<from NLU>"
+	}
+}
