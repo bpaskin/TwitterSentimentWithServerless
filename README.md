@@ -1,4 +1,4 @@
-### Using IBM Cloud Functions (Serverless) with CLoudant NoSQL DB and Watson Natural Language Understanding to interpret keywords from Twitter all for free!
+### Using IBM Cloud Functions (Serverless) with Cloudant NoSQL DB and Watson Natural Language Understanding to interpret keywords from Twitter and store the sentiment - all for free!
 
 ### Will fix instructions soon - Need to add Prometheus / Grafana 
 ---
