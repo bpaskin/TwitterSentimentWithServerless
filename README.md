@@ -5,6 +5,7 @@
 
 Signup for an IBM Cloud Account: https://cloud.ibm.com </br>
 Signup for Twitter Developer account and get necessary Keys and Secrets: https://developer.twitter.com</br>
+
 ---
 
 Install IBM Cloud CLI : https://cloud.ibm.com/docs/cli?topic=cli-install-ibmcloud-cli</br>
@@ -32,6 +33,7 @@ ibmcloud resource service-key nlu-creds
 
 Update the configuration file src/main/java/configuration.json</br>
 Compile code (mvn package)
+
 ---
 ```
 ibmcloud fn namespace create default
