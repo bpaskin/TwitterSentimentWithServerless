@@ -18,17 +18,22 @@ ibmcloud plugin install cloudant
 ```
 ibmcloud login
 ibmcloud target -g default
-
+```
+Create Cloudant DB
+```
 ibmcloud resource service-instance-create cloudant-serverless cloudantnosqldb lite us-south -p '{"legacyCredentials": false}'
 ibmcloud resource service-key-create serverless-creds Manager --instance-name cloudant-serverles
 ibmcloud resource service-key serverless-creds
 ```
-Create DB twitter through Cloudant Dashboard
+Create NLU to be used
 ```
 ibmcloud resource service-instance-create NLU natural-language-understanding free us-south -p '{"legacyCredentials": false}'
 ibmcloud resource service-key-create nlu-creds Manager --instance-name NLU
 ibmcloud resource service-key nlu-creds
 ```
+
+Using the Cloudant Dashboard create a database called "twitter"
+
 ---
 
 Update the configuration file src/main/java/configuration.json</br>
