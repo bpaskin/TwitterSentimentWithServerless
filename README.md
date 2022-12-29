@@ -2,9 +2,11 @@
 
 ### Will fix instructions soon
 ---
+
 Signup for an IBM Cloud Account: https://cloud.ibm.com </br>
 Signup for Twitter Developer account and get necessary Keys and Secrets: https://developer.twitter.com</br>
 ---
+
 Install IBM Cloud CLI : https://cloud.ibm.com/docs/cli?topic=cli-install-ibmcloud-cli</br>
 ```
 ibmcloud plugin install cloud-functions
@@ -19,13 +21,15 @@ ibmcloud target -g default
 ibmcloud resource service-instance-create cloudant-serverless cloudantnosqldb lite us-south -p '{"legacyCredentials": false}'
 ibmcloud resource service-key-create serverless-creds Manager --instance-name cloudant-serverles
 ibmcloud resource service-key serverless-creds
+```
 Create DB twitter through Cloudant Dashboard
-
+```
 ibmcloud resource service-instance-create NLU natural-language-understanding free us-south -p '{"legacyCredentials": false}'
 ibmcloud resource service-key-create nlu-creds Manager --instance-name NLU
 ibmcloud resource service-key nlu-creds
 ```
 ---
+
 Update the configuration file src/main/java/configuration.json</br>
 Compile code (mvn package)
 ---
