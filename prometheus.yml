@@ -1,0 +1,25 @@
+global:
+  scrape_interval: 60s 
+  scrape_timeout: 30s
+  evaluation_interval: 30s
+alerting:
+  alertmanagers:
+  - follow_redirects: true
+    enable_http2: true
+    scheme: https
+    timeout: 10s
+    api_version: v2
+    static_configs:
+    - targets: []
+scrape_configs:
+- job_name: prometheus
+  honor_timestamps: true
+  scrape_interval: 60s
+  scrape_timeout: 30s
+  metrics_path: /api/v1/web/myfunctions/Twitter/metrics
+  scheme: https
+  follow_redirects: true
+  enable_http2: true
+  static_configs:
+  - targets:
+    - eu-de.functions.appdomain.cloud
