@@ -1,6 +1,5 @@
 ### Using IBM Cloud Functions (Serverless) with Cloudant NoSQL DB and Watson Natural Language Understanding to interpret keywords from Twitter and store the sentiment - all for free!
 
-### Will fix instructions soon - Need to add Prometheus / Grafana 
 ---
 
 Signup for an IBM Cloud Account: https://cloud.ibm.com </br>
@@ -46,7 +45,24 @@ ibmcloud fn package create Twitter
 ibmcloud fn action create Twitter/ProcessTweets target/ServerlessTwitter-1.0.0-jar-with-dependencies.jar --main com.ibm.example.RetrieveTweets --web false -P src/main/java/configuration.json
 ibmcloud fn trigger create Every5Minutes --feed /whisk.system/alarms/alarm --param cron "*/5 * * * *"
 ibmcloud fn rule create Triggered Every5Minutes Twitter/ProcessTweets
+ibmcloud fn action create Twitter/metrics target/ServerlessTwitter-1.0.0-jar-with-dependencies.jar --main com.ibm.example.MetricsData --web true -P src/main/java/configuration.json
 ```
+
+The metrics to be used with Prometheus / Grafana can be found here:
+```
+ibmcloud fn action get Twitter/metrics --url
+```
+
+---
+
+For Prometheus, the `prometheus.yml` needs to be updated and placed in the configuration path for it to be picked up.  in particular, the `metrics_path` should be the full context root of the command above to get the url.  My sample `prometheus.yml` is included.
+
+Once Prometheus is setup, then Grafana can be pointed to the Prometheus that is running to gather stats and make dashboards.
+
+If either or both are going to be run in contaienrs, I would suggest updating the time in the container to match the current time or the metrics could be off by days, weeks, etc.
+
+![Grafana Image](https://github.com/bpaskin/TwitterSentimentWithServerless/blob/main/images/Grafana.png)
+
 ---
 Test:
 ```
