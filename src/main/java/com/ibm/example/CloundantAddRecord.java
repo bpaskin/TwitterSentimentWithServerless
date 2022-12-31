@@ -1,5 +1,7 @@
 package com.ibm.example;
 
+import java.time.LocalDateTime;
+
 import com.google.gson.JsonObject;
 import com.ibm.cloud.cloudant.v1.Cloudant;
 import com.ibm.cloud.cloudant.v1.model.Document;
@@ -23,6 +25,9 @@ public class CloundantAddRecord implements Runnable {
 	@Override
 	public void run() {
 		JsonObject cloudantConfig = args.getAsJsonObject("CLOUDANT");
+		JsonObject twitterConfig = args.getAsJsonObject("TWITTER");
+		String phrase = twitterConfig.getAsJsonPrimitive("PHRASE").getAsString();
+		
 		String IAMAPIKEY = cloudantConfig.getAsJsonPrimitive("IAMAPIKEY").getAsString();
 		String URL = cloudantConfig.getAsJsonPrimitive("URL").getAsString();
 		String SERVICENAME = cloudantConfig.getAsJsonPrimitive("SERVICENAME").getAsString();
@@ -39,6 +44,8 @@ public class CloundantAddRecord implements Runnable {
 		Document document = new Document();
 		document.put("tweet", tweet);
 		document.put("sentiment", sentiment);
+		document.put("phrase", phrase);
+		document.put("date", LocalDateTime.now());
 	
 		PostDocumentOptions docOptions = new PostDocumentOptions.Builder().db(DBNAME).document(document).build();
 		service.postDocument(docOptions).execute().getResult();
