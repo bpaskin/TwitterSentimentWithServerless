@@ -53,6 +53,8 @@ The metrics to be used with Prometheus / Grafana can be found here:
 ibmcloud fn action get Twitter/metrics --url
 ```
 
+Different Cloudant [Views](https://cloud.ibm.com/docs/Cloudant?topic=Cloudant-creating-views-mapreduce) can be created to retrieve the specific data, like the counts for a specific term, and the [MetricData.java](https://github.com/bpaskin/TwitterSentimentWithServerless/blob/main/src/main/java/com/ibm/example/MetricsData.java) code can be updated to produce those results for Prometheus ingestion.
+
 ---
 
 For Prometheus, the `prometheus.yml` needs to be updated and placed in the configuration path for it to be picked up.  in particular, the `metrics_path` should be the full context root of the command above to get the url.  My sample `prometheus.yml` is included.
